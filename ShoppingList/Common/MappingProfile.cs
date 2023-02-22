@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Http.Features;
 using Microsoft.EntityFrameworkCore;
 using ShoppingList.Application.CategoryApplication.Command.CreateCommand;
 using ShoppingList.Application.CategoryApplication.Query;
+using ShoppingList.Application.ItemApplication.Command.CreateCommand;
+using ShoppingList.Application.ItemApplication.Query;
 using ShoppingList.Application.ListApplication.Command.CreateCommand;
 using ShoppingList.Application.ListApplication.Query;
 using ShoppingList.DbOperations;
@@ -46,6 +48,12 @@ namespace ShoppingList.Common
                 .ForMember(c => c.Items, c => c.MapFrom(c => c.Items.Select(c => c.Name + " Quantity: " + c.Quantity).ToList()));
             CreateMap<Category, CategoryByIdViewModel>()
                 .ForMember(c => c.Items, c => c.MapFrom(c => c.Items.Select(c => c.Name + " Quantity: " + c.Quantity).ToList()));
+
+            //Item Mapping
+            CreateMap<CreateItemViewModel, Item>();
+            CreateMap<Item, ItemByIdViewModel>();
+            CreateMap<Item, ItemViewModel>();
+
 
         }
     }

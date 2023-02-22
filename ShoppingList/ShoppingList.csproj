@@ -16,11 +16,4 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Application\ItemApplication\Command\CreateCommand\" />
-    <Folder Include="Application\ItemApplication\Command\DeleteCommand\" />
-    <Folder Include="Application\ItemApplication\Command\UpdateCommand\" />
-    <Folder Include="Application\ItemApplication\Query\" />
-  </ItemGroup>
-
 </Project>

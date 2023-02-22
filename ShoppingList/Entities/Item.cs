@@ -9,6 +9,6 @@ namespace ShoppingList.Entities
         public string Name { get; set; }
         public string Quantity { get; set; }
         public string? Description { get; set; }
-        public ICollection<List> lists { get; set; }
+         public ICollection<List> lists { get; set; }
     }
 }
