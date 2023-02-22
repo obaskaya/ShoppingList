@@ -7,8 +7,8 @@ namespace ShoppingList.Entities
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         public string Name { get; set; }
-        public DateOnly CreatedDate { get; set; }
-        public DateOnly FinishedDate { get; set; }
+        public DateTime CreatedDate { get; set; }
+        public DateTime FinishedDate { get; set; }
         public string? Description { get; set; }
         public ICollection<List> lists { get; set; }
         //items 

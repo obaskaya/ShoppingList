@@ -17,10 +17,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Application\CategoryApplication\Command\CreateCommand\" />
-    <Folder Include="Application\CategoryApplication\Command\DeleteCommand\" />
-    <Folder Include="Application\CategoryApplication\Command\UpdateCommand\" />
-    <Folder Include="Application\CategoryApplication\Query\" />
     <Folder Include="Application\ItemApplication\Command\CreateCommand\" />
     <Folder Include="Application\ItemApplication\Command\DeleteCommand\" />
     <Folder Include="Application\ItemApplication\Command\UpdateCommand\" />
