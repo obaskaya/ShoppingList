@@ -10,9 +10,9 @@ namespace ShoppingList.Entities
         public string? Description { get; set; }
 
         //Category
-        public ICollection<Category> Categories { get; set; }
+        public ICollection<Category>? Categories { get; set; }
         //Items
-        public ICollection<Item> Items { get; set; }
+        public ICollection<Item>? Items { get; set; }
 
         //Completed Controller
         public bool Completed { get; set; } = true;

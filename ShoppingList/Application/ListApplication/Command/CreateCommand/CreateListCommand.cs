@@ -30,7 +30,7 @@ namespace ShoppingList.Application.ListApplication.Command.CreateCommand
                 
             foreach (var a in list.Categories)
                 _context.Entry(a).State = EntityState.Unchanged;
-
+            
             foreach (var a in list.Items)
                 _context.Entry(a).State = EntityState.Unchanged;
             await _context.SaveChangesAsync();
