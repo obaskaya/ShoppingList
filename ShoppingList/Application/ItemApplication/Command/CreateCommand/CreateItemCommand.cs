@@ -10,9 +10,9 @@ namespace ShoppingList.Application.ItemApplication.Command.CreateCommand
         public CreateItemViewModel Model { get; set; }
 
         //adding context and mapper
-        private readonly ShoppingListDbContext _context;
+        private readonly IShoppingListDbContext _context;
         private readonly IMapper _mapper;
-        public CreateItemCommand(ShoppingListDbContext context, IMapper mapper)
+        public CreateItemCommand(IShoppingListDbContext context, IMapper mapper)
         {
             _context = context;
             _mapper = mapper;

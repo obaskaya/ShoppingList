@@ -11,8 +11,8 @@ namespace ShoppingList.Application.ItemApplication.Command.UpdateCommand
         public int ItemId { get; set; }
 
         //adding context and mapper
-        private readonly ShoppingListDbContext _context;
-        public UpdateItemCommand(ShoppingListDbContext context)
+        private readonly IShoppingListDbContext _context;
+        public UpdateItemCommand(IShoppingListDbContext context)
         {
             _context = context;
         }

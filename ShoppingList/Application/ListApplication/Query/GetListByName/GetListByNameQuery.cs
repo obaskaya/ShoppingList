@@ -2,34 +2,34 @@
 using Microsoft.EntityFrameworkCore;
 using ShoppingList.DbOperations;
 
-namespace ShoppingList.Application.ListApplication.Query
+namespace ShoppingList.Application.ListApplication.Query.GetListByName
 {
-    public class GetListByIdQuery
+    public class GetListByNameQuery
     {
-        public ListByIdViewModel Model { get; set; }
-        public int ListId { get; set; }
+        public ListByNameViewModel Model { get; set; }
+        public string ListName { get; set; }
 
         //adding context and mapper
-        private readonly ShoppingListDbContext _context;
+        private readonly IShoppingListDbContext _context;
         private readonly IMapper _mapper;
-        public GetListByIdQuery(ShoppingListDbContext context, IMapper mapper)
+        public GetListByNameQuery(IShoppingListDbContext context, IMapper mapper)
         {
             _context = context;
             _mapper = mapper;
         }
-        public async Task<ListByIdViewModel> Handle()
+        public async Task<ListByNameViewModel> Handle()
         {
-            var list = _context.lists.Where(c => c.Completed).Include(c => c.Categories).Include(c => c.Items).FirstOrDefault(c => c.Id == ListId);
+            var list = _context.lists.Where(c => c.Completed).Include(c => c.Categories).Include(c => c.Items).FirstOrDefault(c => c.Name == ListName);
             if (list == null)
                 throw new InvalidOperationException("List doesn't exists in database");
 
-            Model = _mapper.Map<ListByIdViewModel>(list);
+            Model = _mapper.Map<ListByNameViewModel>(list);
             return Model;
         }
 
 
     }
-    public class ListByIdViewModel
+    public class ListByNameViewModel
     {
         public string Name { get; set; }
         public string? Description { get; set; }

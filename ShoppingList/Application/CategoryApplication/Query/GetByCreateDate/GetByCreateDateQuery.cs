@@ -1,37 +1,34 @@
 ﻿using AutoMapper;
 using Microsoft.EntityFrameworkCore;
-using ShoppingList.Application.ListApplication.Query;
 using ShoppingList.DbOperations;
 
-namespace ShoppingList.Application.CategoryApplication.Query
+namespace ShoppingList.Application.CategoryApplication.Query.GetByCreateDate
 {
-    public class GetCategoryByIdQuery
+    public class GetByCreateDateQuery
     {
-        public CategoryByIdViewModel Model { get; set; }
-        public int CategoryId { get; set; }
+        public CreateDateViewModel Model { get; set; }
+        public string CreateDate { get; set; }
 
         //adding context and mapper
-        private readonly ShoppingListDbContext _context;
+        private readonly IShoppingListDbContext _context;
         private readonly IMapper _mapper;
-        public GetCategoryByIdQuery(ShoppingListDbContext context, IMapper mapper)
+        public GetByCreateDateQuery(IShoppingListDbContext context, IMapper mapper)
         {
             _context = context;
             _mapper = mapper;
         }
-        public async Task<CategoryByIdViewModel> Handle()
+        public async Task<CreateDateViewModel> Handle()
         {
-            var cats = _context.Categories.Include(c => c.Items).FirstOrDefault(c => c.Id == CategoryId);
+            var cats = _context.Categories.Include(c => c.Items).FirstOrDefault(c => c.CreatedDate.ToString("yyyy-MM-dd") == CreateDate);
             if (cats == null)
                 throw new InvalidOperationException("Category doesn't exists in database");
 
-            Model = _mapper.Map<CategoryByIdViewModel>(cats);
+            Model = _mapper.Map<CreateDateViewModel>(cats);
             return Model;
         }
-
     }
-    public class CategoryByIdViewModel
+    public class CreateDateViewModel
     {
-
         public string Name { get; set; }
         public DateTime CreatedDate { get; set; }
         public DateTime FinishedDate { get; set; }

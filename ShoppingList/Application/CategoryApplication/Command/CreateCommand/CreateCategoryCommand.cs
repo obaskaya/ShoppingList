@@ -11,9 +11,9 @@ namespace ShoppingList.Application.CategoryApplication.Command.CreateCommand
         public CreateCategoryModel Model { get; set; }
 
         //adding context and mapper
-        private readonly ShoppingListDbContext _context;
+        private readonly IShoppingListDbContext _context;
         private readonly IMapper _mapper;
-        public CreateCategoryCommand(ShoppingListDbContext context, IMapper mapper)
+        public CreateCategoryCommand(IShoppingListDbContext context, IMapper mapper)
         {
             _context = context;
             _mapper = mapper;

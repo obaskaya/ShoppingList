@@ -9,9 +9,9 @@ namespace ShoppingList.Application.ItemApplication.Query
         public int ItemId { get; set; }
 
         //adding context and mapper
-        private readonly ShoppingListDbContext _context;
+        private readonly IShoppingListDbContext _context;
         private readonly IMapper _mapper;
-        public GetItemByIdQuery(ShoppingListDbContext context, IMapper mapper)
+        public GetItemByIdQuery(IShoppingListDbContext context, IMapper mapper)
         {
             _context = context;
             _mapper = mapper;

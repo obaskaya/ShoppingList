@@ -5,9 +5,9 @@ namespace ShoppingList.Application.ItemApplication.Command.DeleteCommand
     public class DeleteItemCommand
     {
         public int ItemId { get; set; }
-        private readonly ShoppingListDbContext _context;
+        private readonly IShoppingListDbContext _context;
 
-        public DeleteItemCommand(ShoppingListDbContext context)
+        public DeleteItemCommand(IShoppingListDbContext context)
         {
             _context = context;
 

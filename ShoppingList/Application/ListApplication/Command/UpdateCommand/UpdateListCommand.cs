@@ -10,9 +10,9 @@ namespace ShoppingList.Application.ListApplication.Command.UpdateCommand
         public UpdateListModel Model { get; set; }
         public int ListId { get; set; }
         //adding context 
-        private readonly ShoppingListDbContext _context;
+        private readonly IShoppingListDbContext _context;
         
-        public UpdateListCommand(ShoppingListDbContext context)
+        public UpdateListCommand(IShoppingListDbContext context)
         {
             _context = context;        
         }

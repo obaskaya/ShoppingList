@@ -17,9 +17,9 @@ namespace ShoppingList.Controllers
     [Route("api/[controller]")]
     public class ItemController : Controller
     {
-        private readonly ShoppingListDbContext _context;
+        private readonly IShoppingListDbContext _context;
         private readonly IMapper _mapper;
-        public ItemController(ShoppingListDbContext context, IMapper mapper)
+        public ItemController(IShoppingListDbContext context, IMapper mapper)
         {
             _context = context;
             _mapper = mapper;

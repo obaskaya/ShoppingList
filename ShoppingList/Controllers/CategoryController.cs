@@ -5,10 +5,10 @@ using ShoppingList.Application.CategoryApplication.Command.CreateCommand;
 using ShoppingList.Application.CategoryApplication.Command.DeleteCommand;
 using ShoppingList.Application.CategoryApplication.Command.UpdateCommand;
 using ShoppingList.Application.CategoryApplication.Query;
-using ShoppingList.Application.ListApplication.Command.CreateCommand;
-using ShoppingList.Application.ListApplication.Command.DeleteCommand;
-using ShoppingList.Application.ListApplication.Command.UpdateCommand;
-using ShoppingList.Application.ListApplication.Query;
+using ShoppingList.Application.CategoryApplication.Query.GetByCreateDate;
+using ShoppingList.Application.CategoryApplication.Query.GetById;
+using ShoppingList.Application.CategoryApplication.Query.GetByPublishDate;
+
 using ShoppingList.DbOperations;
 
 namespace ShoppingList.Controllers
@@ -16,16 +16,16 @@ namespace ShoppingList.Controllers
     [Route("api/[controller]")]
     public class CategoryController : Controller
     {
-        private readonly ShoppingListDbContext _context;
+        private readonly IShoppingListDbContext _context;
         private readonly IMapper _mapper;
-        public CategoryController(ShoppingListDbContext context, IMapper mapper)
+        public CategoryController(IShoppingListDbContext context, IMapper mapper)
         {
             _context = context;
             _mapper = mapper;
         }
         // GET: All Categories
-        [HttpGet]
-        public async Task<IActionResult> Get()
+        [HttpGet("GetAll")]
+        public async Task<IActionResult> GetAll()
         {
             GetCategoryQuery query = new(_context, _mapper);
             var result = await query.Handle();
@@ -34,13 +34,40 @@ namespace ShoppingList.Controllers
         }
 
         // GET Category Detail
-        [HttpGet("{id}")]
-        public async Task<IActionResult> Get(int id)
+        [HttpGet("{GetById}")]
+        public async Task<IActionResult> GetById(int GetById)
         {
             GetCategoryByIdQuery query = new(_context, _mapper);
 
-            query.CategoryId = id;
+            query.CategoryId = GetById;
             GetCategoryByIdQueryValidator validator = new GetCategoryByIdQueryValidator();
+
+            validator.ValidateAndThrow(query);
+            var result = await query.Handle();
+            return Ok(result);
+        }
+        // GET By create date
+        [HttpGet("CreateDate")]
+        public async Task<IActionResult> GetByCreateDate(string date)
+        {
+            GetByCreateDateQuery query = new(_context, _mapper);
+
+            query.CreateDate = date;
+            GetByCreateDateQueryValidator validator = new GetByCreateDateQueryValidator();
+
+            validator.ValidateAndThrow(query);
+            var result = await query.Handle();
+            return Ok(result);
+        }
+
+        // GET By Finish date
+        [HttpGet("FinishDate")]
+        public async Task<IActionResult> GetByFinishDate(string date)
+        {
+            GetByFinishDateQuery query = new(_context, _mapper);
+
+            query.FinDate = date;
+            GetByFinishDateQueryValidator validator = new GetByFinishDateQueryValidator();
 
             validator.ValidateAndThrow(query);
             var result = await query.Handle();
@@ -48,7 +75,7 @@ namespace ShoppingList.Controllers
         }
 
         // Create Category
-        [HttpPost]
+        [HttpPost("CreateCategory")]
         public async Task<IActionResult> Post([FromBody] CreateCategoryModel newCategory)
         {
             CreateCategoryCommand command = new(_context, _mapper);
@@ -62,13 +89,13 @@ namespace ShoppingList.Controllers
         }
 
         // Update Category
-        [HttpPut("{id}")]
-        public async Task<IActionResult> Put(int id, [FromBody] UpdateCategoryModel updateCategory)
+        [HttpPut("{UpdateCategory}")]
+        public async Task<IActionResult> Put(int UpdateCategory, [FromBody] UpdateCategoryModel updateCategory)
         {
             UpdateCategoryCommand update = new(_context);
 
             update.Model = updateCategory;
-            update.CategoryId = id;
+            update.CategoryId = UpdateCategory;
 
             UpdateCategoryCommandValidator validator = new UpdateCategoryCommandValidator();
             validator.ValidateAndThrow(update);
@@ -78,11 +105,11 @@ namespace ShoppingList.Controllers
         }
 
         // DELETE Category
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete(int id)
+        [HttpDelete("{DeleteCategory}")]
+        public async Task<IActionResult> Delete(int DeleteCategory)
         {
             DeleteCategoryCommand command = new(_context);
-            command.CategoryId = id;
+            command.CategoryId = DeleteCategory;
 
             DeleteCategoryCommandValidator validator = new DeleteCategoryCommandValidator();
             validator.ValidateAndThrow(command);

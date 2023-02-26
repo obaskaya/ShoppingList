@@ -11,9 +11,9 @@ namespace ShoppingList.Application.ListApplication.Command.CreateCommand
         public CreateListModel Model { get; set; }
 
         //adding context and mapper
-        private readonly ShoppingListDbContext _context;
+        private readonly IShoppingListDbContext _context;
         private readonly IMapper _mapper;
-        public CreateListCommand(ShoppingListDbContext context, IMapper mapper)
+        public CreateListCommand(IShoppingListDbContext context, IMapper mapper)
         {
             _context = context;
             _mapper = mapper;

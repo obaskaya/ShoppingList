@@ -10,8 +10,8 @@ namespace ShoppingList.Application.CategoryApplication.Command.UpdateCommand
         public int CategoryId { get; set; }
 
         //adding context and mapper
-        private readonly ShoppingListDbContext _context;
-        public UpdateCategoryCommand(ShoppingListDbContext context)
+        private readonly IShoppingListDbContext _context;
+        public UpdateCategoryCommand(IShoppingListDbContext context)
         {
             _context = context;
         }
