@@ -12,6 +12,7 @@ using ShoppingList.Application.ListApplication.Command.CreateCommand;
 using ShoppingList.Application.ListApplication.Query;
 using ShoppingList.Application.ListApplication.Query.GetListById;
 using ShoppingList.Application.ListApplication.Query.GetListByName;
+using ShoppingList.Application.UserApplication.Command.CreateCommand;
 using ShoppingList.DbOperations;
 using ShoppingList.Entities;
 
@@ -69,6 +70,9 @@ namespace ShoppingList.Common
             CreateMap<CreateItemViewModel, Item>();
             CreateMap<Item, ItemByIdViewModel>();
             CreateMap<Item, ItemViewModel>();
+            
+            //User Mapping
+            CreateMap<CreateUserModel, User>();   
 
 
         }

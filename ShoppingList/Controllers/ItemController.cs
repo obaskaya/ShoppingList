@@ -1,10 +1,7 @@
 ﻿using AutoMapper;
 using FluentValidation;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using ShoppingList.Application.CategoryApplication.Command.CreateCommand;
-using ShoppingList.Application.CategoryApplication.Command.DeleteCommand;
-using ShoppingList.Application.CategoryApplication.Command.UpdateCommand;
-using ShoppingList.Application.CategoryApplication.Query;
 using ShoppingList.Application.ItemApplication.Command.CreateCommand;
 using ShoppingList.Application.ItemApplication.Command.DeleteCommand;
 using ShoppingList.Application.ItemApplication.Command.UpdateCommand;
@@ -13,6 +10,7 @@ using ShoppingList.DbOperations;
 
 namespace ShoppingList.Controllers
 {
+    [Authorize]
 
     [Route("api/[controller]")]
     public class ItemController : Controller

@@ -14,6 +14,7 @@ namespace ShoppingList.DbOperations
         public DbSet<Category> Categories { get; set; }
         public DbSet<Item> Items { get; set; }
         public DbSet<List> lists { get; set; }
+        public DbSet<User> Users { get; set; }
         public override int SaveChanges()
         {
             return base.SaveChanges();
