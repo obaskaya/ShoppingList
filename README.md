@@ -33,5 +33,19 @@
 <code>PUT</code><code>/api</code><code>/Category</code><code>/{UpdateCategory}</code><br>
 <code>DELETE</code><code>/api</code><code>/Category</code><code>/{DeleteCategory}</code><br>
 ```diff 
+- Item HTTP REQUEST's
+```
+<code>GET</code><code>/api</code><code>/Item</code><code>/GetAll</code><br>
+<code>GET</code><code>/api</code><code>/Item</code><code>/GetById</code><code>/{Id}</code><br>
+<code>POST</code><code>/api</code><code>/Item</code><code>/CreateItem</code><br>
+<code>PUT</code><code>/api</code><code>/Item</code><code>/Update</code><code>/{Id}</code><br>
+<code>DELETE</code><code>/api</code><code>/Item</code><code>/DeleteCategory</code><code>/{Id}</code><br>
+```diff 
 - List HTTP REQUEST's
 ```
+<code>GET</code><code>/api</code><code>/List</code><br>
+<code>GET</code><code>/api</code><code>/List</code><code>/GetById</code><code>/{Id}</code><br>
+<code>GET</code><code>/api</code><code>/List</code><code>/search</code><br>
+<code>POST</code><code>/api</code><code>/List</code><code>/CreateList</code><br>
+<code>PUT</code><code>/api</code><code>/List</code><code>/Update</code><code>/{Id}</code><br>
+<code>DELETE</code><code>/api</code><code>/List</code><code>/Delete</code><code>/{Id}</code><br>
