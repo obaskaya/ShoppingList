@@ -1,11 +1,14 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ShoppingList.Application.UserApplication.Command.CreateCommand;
 using ShoppingList.DbOperations;
 using ShoppingList.TokenOperations.Models;
+using System.Data;
 
 namespace ShoppingList.Controllers
 {
+    
     [ApiController]
     [Route("[controller]s")]
     public class UserController : ControllerBase

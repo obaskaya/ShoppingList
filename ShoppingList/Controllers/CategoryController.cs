@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using FluentValidation;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ShoppingList.Application.CategoryApplication.Command.CreateCommand;
 using ShoppingList.Application.CategoryApplication.Command.DeleteCommand;
@@ -10,9 +11,11 @@ using ShoppingList.Application.CategoryApplication.Query.GetById;
 using ShoppingList.Application.CategoryApplication.Query.GetByPublishDate;
 
 using ShoppingList.DbOperations;
+using System.Data;
 
 namespace ShoppingList.Controllers
 {
+    [Authorize(Roles = "Admin")]
     [Route("api/[controller]")]
     public class CategoryController : Controller
     {

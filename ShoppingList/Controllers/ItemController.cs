@@ -10,7 +10,7 @@ using ShoppingList.DbOperations;
 
 namespace ShoppingList.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "Admin")]
 
     [Route("api/[controller]")]
     public class ItemController : Controller
@@ -45,7 +45,7 @@ namespace ShoppingList.Controllers
             var result = await query.Handle();
             return Ok(result);
         }
-
+        
         // Create Item
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] CreateItemViewModel newItem)
